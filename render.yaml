@@ -1,0 +1,56 @@
+# Render Blueprint - Infrastructure as Code
+# Deploy with: https://render.com/deploy
+
+services:
+  # Main Next.js Web Service
+  - type: web
+    name: jobpilot-ai
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: NEXT_PUBLIC_APP_URL
+        fromService:
+          type: web
+          name: jobpilot-ai
+          property: host
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jobpilot-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      # Add your AI API key in Render dashboard
+      - key: OPENAI_API_KEY
+        sync: false
+
+  # Background Worker for Cron Jobs (optional - requires paid plan)
+  # - type: worker
+  #   name: jobpilot-worker
+  #   runtime: node
+  #   region: oregon
+  #   plan: starter
+  #   buildCommand: npm install
+  #   startCommand: node scripts/worker.js
+  #   envVars:
+  #     - key: DATABASE_URL
+  #       fromDatabase:
+  #         name: jobpilot-db
+  #         property: connectionString
+
+# PostgreSQL Database
+databases:
+  - name: jobpilot-db
+    region: oregon
+    plan: free
+    databaseName: jobpilot
+    user: jobpilot
