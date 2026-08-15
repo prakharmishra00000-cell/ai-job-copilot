@@ -170,12 +170,12 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Demo Banner */}
-      <div className="demo-banner flex items-center gap-2">
-        <span>⚠️</span>
-        <span>
-          <strong>Demo Mode</strong> — Jobs shown are sample data for demonstration.
-          Connect real job sources in production for live data.
+      {/* Live Jobs Banner */}
+      <div className="glass-card p-4 border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-3">
+        <span className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
+        <span className="text-sm text-emerald-300">
+          <strong>Live Job Search Active</strong> — Connected to RemoteOK, Jobicy, Himalayas, Findwork & more. 
+          Real jobs from real companies, updated continuously.
         </span>
       </div>
 

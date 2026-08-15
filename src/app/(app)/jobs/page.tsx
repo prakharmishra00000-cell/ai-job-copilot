@@ -138,10 +138,12 @@ export default function JobsPage() {
         ))}
       </div>
 
-      {/* Demo Banner */}
-      <div className="demo-banner flex items-center gap-2 text-xs">
-        <span>⚠️</span>
-        <span>DEMO DATA — These are sample job listings for demonstration purposes. Connect real job sources for live data.</span>
+      {/* Live Jobs Banner */}
+      <div className="glass-card p-3 border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-3">
+        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shrink-0"></span>
+        <span className="text-xs text-emerald-300">
+          <strong>Live Jobs</strong> — Real positions from RemoteOK, Jobicy, Himalayas, Findwork & more job boards.
+        </span>
       </div>
 
       {/* Jobs List */}
