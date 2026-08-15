@@ -1,5 +1,13 @@
-# Render Blueprint - JobPilot AI
-# Auto-deploys when you push to GitHub
+# ==============================================
+# JobPilot AI - Render Deployment
+# ==============================================
+# 
+# ZERO SETUP REQUIRED!
+# Just deploy and start using.
+#
+# Optional: Add GOOGLE_AI_API_KEY for AI features
+# Get free key: https://aistudio.google.com/apikey
+# ==============================================
 
 services:
   - type: web
@@ -26,13 +34,13 @@ services:
         generateValue: true
       - key: ENCRYPTION_KEY
         generateValue: true
-      # Google Gemini AI - Get free key at https://aistudio.google.com/apikey
+      # ========================================
+      # OPTIONAL: Google Gemini AI (FREE)
+      # Get key at: https://aistudio.google.com/apikey
+      # Enables: AI cover letters, smart matching
+      # App works WITHOUT this key too!
+      # ========================================
       - key: GOOGLE_AI_API_KEY
-        sync: false
-      # Optional: Adzuna API for more job sources
-      - key: ADZUNA_APP_ID
-        sync: false
-      - key: ADZUNA_APP_KEY
         sync: false
 
 databases:
