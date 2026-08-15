@@ -1,8 +1,7 @@
-# Render Blueprint - Infrastructure as Code
-# Deploy with: https://render.com/deploy
+# Render Blueprint - JobPilot AI
+# Auto-deploys when you push to GitHub
 
 services:
-  # Main Next.js Web Service
   - type: web
     name: jobpilot-ai
     runtime: node
@@ -27,10 +26,15 @@ services:
         generateValue: true
       - key: ENCRYPTION_KEY
         generateValue: true
-      - key: OPENAI_API_KEY
+      # Google Gemini AI - Get free key at https://aistudio.google.com/apikey
+      - key: GOOGLE_AI_API_KEY
+        sync: false
+      # Optional: Adzuna API for more job sources
+      - key: ADZUNA_APP_ID
+        sync: false
+      - key: ADZUNA_APP_KEY
         sync: false
 
-# PostgreSQL Database
 databases:
   - name: jobpilot-db
     region: oregon
